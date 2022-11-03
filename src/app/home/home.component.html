@@ -2,12 +2,13 @@
 <p>You're logged in!!</p>
 <h3>All registered users:</h3>
 <!-- <ul>
-    <li *ngFor="let user of users">
+    <li *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: page } | filter:term"">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
         <br/><span class="badge badge-secondary">{{user.role}}</span>
         <br/><a (click)="deleteUser(user.id)" class="badge badge-danger" *ngIf="currentUser.role == 'Auditor'">Delete</a>
     </li>
 </ul> -->
+<input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" placeholder="Serach any fields" class="form-control"/>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -26,3 +27,4 @@
         </tr>
     </tbody>
 </table>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
