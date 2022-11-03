@@ -1,4 +1,4 @@
-<h1>Hi {{currentUser.firstName}}!</h1>
+<h1>Hi {{currentUser?.firstName}}!</h1>
 <p>You're logged in with Angular 8!!</p>
 <h3>All login audit :</h3>
 <!-- <ul>
@@ -11,7 +11,7 @@
     </li>
 
 </ul> -->
-
+<input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" placeholder="Serach any fields" class="form-control"/>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -23,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let audit of audits">
+        <tr *ngFor="let audit of audits | paginate: { itemsPerPage: 10, currentPage: page } | filter:term">
             <td>{{audit.user}}</td>
             <td class="badge badge-secondary">{{audit._id}}</td>
             <td> {{audit.loginTime}}</td>
@@ -32,3 +32,4 @@
         </tr>
     </tbody>
 </table>
+<pagination-controls (pageChange)="page = $event"></pagination-controls>
