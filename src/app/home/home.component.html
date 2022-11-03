@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: page } | filter:term">
             <td>{{user.username}}</td>
             <td class="badge badge-secondary">{{user.role}}</td>
             <td>
