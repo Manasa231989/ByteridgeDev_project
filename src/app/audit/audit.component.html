@@ -1,0 +1,34 @@
+<h1>Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in with Angular 8!!</p>
+<h3>All login audit :</h3>
+<!-- <ul>
+    <li *ngFor="let audit of audits">
+        <br/><span class="badge badge-primary">{{audit.user}}</span>
+        <br/><span class="badge badge-secondary">{{audit._id}}</span>
+        <br/>Login - {{audit.loginTime}}
+        <br/>Logout - {{audit.logoutTime}}
+        <br/>IP - {{audit.ip}}
+    </li>
+
+</ul> -->
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Audit</th>
+            <th>Audit Id</th>
+            <th>Login time</th>
+            <th>Logout time</th>
+            <th>IP</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let audit of audits">
+            <td>{{audit.user}}</td>
+            <td class="badge badge-secondary">{{audit._id}}</td>
+            <td> {{audit.loginTime}}</td>
+            <td>{{audit.logoutTime}}</td>
+            <td>{{audit.ip}}</td>
+        </tr>
+    </tbody>
+</table>
